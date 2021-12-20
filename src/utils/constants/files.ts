@@ -5,4 +5,4 @@ const name = "pokedex-light";
 const extension = "json";
 const file = `${folder}/${name}.${extension}`;
 
-module.exports = file;
+export { file };

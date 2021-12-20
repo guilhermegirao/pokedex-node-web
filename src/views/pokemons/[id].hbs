@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-xs-12">
+            <img
+              src="{{pokemon.image}}"
+              class="card-img-top"
+              alt="{{pokemon.name}}"
+            />
+          </div>
+          <div class="col-lg-8 col-md-8 col-xs-12">
+            <h5 class="card-title">#{{pokemon.id}} - {{pokemon.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              <span class="badge badge-secondary">
+                {{pokemon.type1}}
+              </span>
+              {{#if pokemon.type2}}
+                <span class="badge badge-secondary">
+                  {{pokemon.type2}}
+                </span>
+              {{/if}}
+            </h6>
+            <p>
+              Peso:
+              {{pokemon.weight}}lbs
+            </p>
+            <p>
+              Altura:
+              {{pokemon.height}}"
+            </p>
+            <p>Status:</p>
+            <hr style="w-100" />
+            <p>PvMax: {{pokemon.stats.pvMax}}</p>
+            <p>Ataque: {{pokemon.stats.ataque}}</p>
+            <p>Defesa: {{pokemon.stats.defesa}}</p>
+            <p>Ataque Especial: {{pokemon.stats.ataque_especial}}</p>
+            <p>Defesa Especial: {{pokemon.stats.defesa_especial}}</p>
+            <p>Velocidade: {{pokemon.stats.velocidade}}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
