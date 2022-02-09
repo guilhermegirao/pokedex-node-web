@@ -1,4 +1,5 @@
 import fs from "fs";
+import { Request, Response } from "express";
 import { Pokemon } from "../models/Pokemon";
 import { file as pokedexFile } from "../utils/constants/files";
 
@@ -53,11 +54,23 @@ export class PokemonsController {
     }
   }
 
-  getAll(): Pokemon[] {
-    return this.pokemons;
+  getAll(req: Request, res: Response) {
+    return res.status(200).json({ pokemons: this.pokemons });
   }
 
-  getById(id: number): Pokemon {
-    return this.pokemons.filter((pokemon) => pokemon.id === id)[0];
+  getById(req: Request, res: Response) {
+    const { id: paramId } = req.params;
+
+    try {
+      const id = Number(paramId);
+      const pokemon = this.pokemons.filter((pokemon) => pokemon.id === id);
+
+      if (pokemon?.length > 0)
+        return res.status(200).json({ pokemon: pokemon[0] });
+
+      return res.status(404).json({ error: "Pokémon não encontrado" });
+    } catch (err) {
+      return res.status(400).json({ error: err });
+    }
   }
 }
